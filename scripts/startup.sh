@@ -20,17 +20,3 @@ cd ../terraform
 terraform init
 terraform apply -auto-approve
 cd ..
-
-
-echo "Waiting 30 to test"
-sleep 30
-
-
-
-#Clean up instances
-cd ../terraform
-echo Cleaning instances...
-rm -f destroy.txt
-terraform destroy -auto-approve > destroy.txt
-echo Done!
-cd ..
