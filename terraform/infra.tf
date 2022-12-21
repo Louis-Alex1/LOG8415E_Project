@@ -8,6 +8,8 @@ resource "aws_instance" "standalone" {
   instance_type = "t2.micro"
   associate_public_ip_address = true
   subnet_id              = aws_subnet.subnet1.id
+  key_name = "FinalProject"
+  vpc_security_group_ids = [aws_security_group.ssh.id]
 }
 
 resource "aws_instance" "cluster" {
@@ -16,4 +18,6 @@ resource "aws_instance" "cluster" {
   instance_type = "t2.micro"
   associate_public_ip_address = true
   subnet_id              = aws_subnet.subnet2.id
+  key_name = "FinalProject"
+  vpc_security_group_ids = [aws_security_group.ssh.id]
 }
