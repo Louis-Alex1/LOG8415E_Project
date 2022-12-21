@@ -8,10 +8,6 @@ resource "aws_instance" "standalone" {
   instance_type = "t2.micro"
   associate_public_ip_address = true
   subnet_id              = aws_subnet.subnet1.id
-  network_interface {
-    network_interface_id = "${aws_network_interface.interface1.id}"
-    device_index = 0
-  }
 }
 
 resource "aws_instance" "cluster" {
@@ -20,8 +16,4 @@ resource "aws_instance" "cluster" {
   instance_type = "t2.micro"
   associate_public_ip_address = true
   subnet_id              = aws_subnet.subnet2.id
-  network_interface {
-    network_interface_id = "${aws_network_interface.interface2.id}"
-    device_index = 0
-  }
 }
