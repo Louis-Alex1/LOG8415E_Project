@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#Update instance and install mysql-server
+sudo apt update -y
+sudo apt upgrade -y 
+sudo apt-get install mysql-server
+
+#Get the sakila database and unzip it
+wget https://downloads.mysql.com/docs/sakila-db.tar.gz
+tar -xf sakila-db.tar.gz
+
+#Get the sakila database and unzip it
+sudo mysql -e "SOURCE sakila-schema.sql;"
+sudo mysql -e "SOURCE sakila-data.sql;"
+sudo mysql -e "USE sakila;"
+
+#Create user with all permissions
+sudo mysql -e "CREATE USER 'benchmark'@'localhost' IDENTIFIED BY 'admin123';"
+sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'benchmark'@'localhost' WITH GRANT OPTION;"
+
+#Install Sysbench
+sudo apt update -y
+sudo apt-get install sysbench -y
