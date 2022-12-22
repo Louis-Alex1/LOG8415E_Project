@@ -13,12 +13,6 @@ resource "aws_subnet" "subnet1" {
   availability_zone = "us-east-1a"
 }
 
-resource "aws_subnet" "subnet2" {
-  vpc_id            = aws_vpc.vpc.id
-  cidr_block        = "10.0.2.0/24"
-  availability_zone = "us-east-1a"
-}
-
 # Virtual private cloud configuration
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.vpc.id
@@ -44,11 +38,6 @@ resource "aws_route_table" "public_rt" {
 
 resource "aws_route_table_association" "rt_a_standalone" {
   subnet_id      = aws_subnet.subnet1.id
-  route_table_id = aws_route_table.public_rt.id
-}
-
-resource "aws_route_table_association" "rt_a_cluster" {
-  subnet_id      = aws_subnet.subnet2.id
   route_table_id = aws_route_table.public_rt.id
 }
 
