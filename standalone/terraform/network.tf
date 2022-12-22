@@ -45,8 +45,8 @@ resource "aws_route_table_association" "rt_a_standalone" {
 }
 
 # Security groups to allow the use of different ports
-resource "aws_security_group" "ssh_mysql" {
-  name  = "SSH and MySQL"
+resource "aws_security_group" "standalone_security_group" {
+  name  = "Standalone security group"
   vpc_id = aws_vpc.vpc.id
 
   ingress {
