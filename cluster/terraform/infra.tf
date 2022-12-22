@@ -6,7 +6,7 @@
 resource "aws_instance" "cluster" {
   count         = 4
   ami           = "ami-0a6b2839d44d781b2"
-  instance_type = "t2.micro"
+  instance_type = "t2.large"
   associate_public_ip_address = true
   subnet_id              = aws_subnet.subnet1.id
   key_name = "FinalProject"

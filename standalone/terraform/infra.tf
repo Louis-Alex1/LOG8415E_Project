@@ -6,7 +6,7 @@
 resource "aws_instance" "standalone" {
   count         = 1
   ami           = "ami-0a6b2839d44d781b2"
-  instance_type = "t2.micro"
+  instance_type = "t2.large"
   associate_public_ip_address = true
   user_data = templatefile("../scripts/standalone-config.sh.tftpl", {
     number = count.index
