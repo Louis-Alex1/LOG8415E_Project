@@ -52,13 +52,20 @@ resource "aws_route_table_association" "rt_a_cluster" {
   route_table_id = aws_route_table.public_rt.id
 }
 
-resource "aws_security_group" "ssh" {
-  name  = "SSH"
+resource "aws_security_group" "ssh_mysql" {
+  name  = "SSH and MySQL"
   vpc_id = aws_vpc.vpc.id
 
   ingress {
     from_port        = 22
     to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port        = 3306
+    to_port          = 3306
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
   }

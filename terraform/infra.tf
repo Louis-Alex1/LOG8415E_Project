@@ -12,7 +12,7 @@ resource "aws_instance" "standalone" {
   })
   subnet_id              = aws_subnet.subnet1.id
   key_name = "FinalProject"
-  vpc_security_group_ids = [aws_security_group.ssh.id]
+  vpc_security_group_ids = [aws_security_group.ssh_mysql.id]
 }
 
 resource "aws_instance" "cluster" {
@@ -22,5 +22,5 @@ resource "aws_instance" "cluster" {
   associate_public_ip_address = true
   subnet_id              = aws_subnet.subnet2.id
   key_name = "FinalProject"
-  vpc_security_group_ids = [aws_security_group.ssh.id]
+  vpc_security_group_ids = [aws_security_group.ssh_mysql.id]
 }
