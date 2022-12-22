@@ -1,24 +1,10 @@
 #!/bin/bash
 
-#AWS credentials configuration
-echo AWS Access Key ID:
-read aws_access_key_id
-
-echo AWS Secret Access Key:
-read aws_secret_access_key
-
-echo AWS Session Token:
-read aws_session_token
-
-aws configure set aws_access_key_id $aws_access_key_id
-aws configure set aws_secret_access_key $aws_secret_access_key
-aws configure set aws_session_token $aws_session_token
-aws configure set region "us-east-1"
-
-#Stop the instances
+#Stop the cluster instances
 echo "Stopping cluster instances..."
-aws ec2 stop-instances --instance-ids i-04c66e18e95463ab5 > stop.txt
-aws ec2 stop-instances --instance-ids i-0aecb3b6667105909 > stop.txt
-aws ec2 stop-instances --instance-ids i-0c84a77a8aa9b5bc9 > stop.txt
-aws ec2 stop-instances --instance-ids i-0ebaa92895802c983 > stop.txt
+aws ec2 stop-instances --instance-ids i-0b633761237c7d95c > stop.txt
+aws ec2 stop-instances --instance-ids i-0919ffd03f5e1e8e7 > stop.txt
+aws ec2 stop-instances --instance-ids i-04cb8e3f35c3e24fb > stop.txt
+aws ec2 stop-instances --instance-ids i-0924ac68e327f46aa > stop.txt
+rm -f stop.txt
 echo "Done"

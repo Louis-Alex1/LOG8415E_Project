@@ -1,24 +1,10 @@
 #!/bin/bash
 
-#AWS credentials configuration
-echo AWS Access Key ID:
-read aws_access_key_id
-
-echo AWS Secret Access Key:
-read aws_secret_access_key
-
-echo AWS Session Token:
-read aws_session_token
-
-aws configure set aws_access_key_id $aws_access_key_id
-aws configure set aws_secret_access_key $aws_secret_access_key
-aws configure set aws_session_token $aws_session_token
-aws configure set region "us-east-1"
-
-#Start the instances
+#Start the cluster instances
 echo "Starting cluster instances..."
-aws ec2 start-instances --instance-ids i-04c66e18e95463ab5 > start.txt
-aws ec2 start-instances --instance-ids i-0aecb3b6667105909 > start.txt
-aws ec2 start-instances --instance-ids i-0c84a77a8aa9b5bc9 > start.txt
-aws ec2 start-instances --instance-ids i-0ebaa92895802c983 > start.txt
+aws ec2 start-instances --instance-ids i-0b633761237c7d95c > start.txt
+aws ec2 start-instances --instance-ids i-0919ffd03f5e1e8e7 > start.txt
+aws ec2 start-instances --instance-ids i-04cb8e3f35c3e24fb > start.txt
+aws ec2 start-instances --instance-ids i-0924ac68e327f46aa > start.txt
+rm -f start.txt
 echo "Done"

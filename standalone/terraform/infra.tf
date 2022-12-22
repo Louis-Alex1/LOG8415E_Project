@@ -13,4 +13,7 @@ resource "aws_instance" "standalone" {
   subnet_id              = aws_subnet.subnet1.id
   key_name = "FinalProject"
   vpc_security_group_ids = [aws_security_group.ssh_mysql.id]
+  tags = {
+    Name = "standalone"
+  }
 }
