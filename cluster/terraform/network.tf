@@ -59,6 +59,13 @@ resource "aws_security_group" "ssh_mysql" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port        = 1186
+    to_port          = 1186
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port        = 0
     to_port          = 0
