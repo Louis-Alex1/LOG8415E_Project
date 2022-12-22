@@ -2,11 +2,13 @@
 # network.tf
 # Terraform configuration relative to network definitions
 
+# Custom Virtual Private Cloud
 resource "aws_vpc" "vpc" {
   cidr_block = "10.0.0.0/16"
   enable_dns_support = true
 }
 
+# Defining the subnet for the standalone instance
 resource "aws_subnet" "subnet1" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = "10.0.1.0/24"
@@ -18,6 +20,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.vpc.id
 }
 
+# Route configuration
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.vpc.id
 
@@ -41,6 +44,7 @@ resource "aws_route_table_association" "rt_a_standalone" {
   route_table_id = aws_route_table.public_rt.id
 }
 
+# Security groups to allow the use of different ports
 resource "aws_security_group" "ssh_mysql" {
   name  = "SSH and MySQL"
   vpc_id = aws_vpc.vpc.id

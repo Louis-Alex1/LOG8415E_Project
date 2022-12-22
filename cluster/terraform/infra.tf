@@ -1,6 +1,8 @@
 # LOG8415E - Final Project
 # infra.tf
 # Terraform configuration relative to instance definitions
+
+# Declaring 4 t2.micro instances for the cluster
 resource "aws_instance" "cluster" {
   count         = 4
   ami           = "ami-0574da719dca65348"

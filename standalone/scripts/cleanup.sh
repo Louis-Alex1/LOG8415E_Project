@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-#Clean up instances
+#Clean up the instance
 cd ../terraform
 echo Cleaning the instance...
 terraform destroy -auto-approve > destroy.txt

@@ -2,6 +2,7 @@
 # infra.tf
 # Terraform configuration relative to instance definitions
 
+# Start one t2.micro instance for the standalone
 resource "aws_instance" "standalone" {
   count         = 1
   ami           = "ami-0574da719dca65348"
