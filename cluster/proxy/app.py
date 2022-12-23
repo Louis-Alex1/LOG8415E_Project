@@ -42,7 +42,7 @@ def hit():
         return query
 
 # Route for the random algorithm
-@app.route('/random', methods = ['POST'])
+@app.route('/randomNode', methods = ['POST'])
 def randomNode():
     if request.method == 'POST':
         query = request.form.get('query')

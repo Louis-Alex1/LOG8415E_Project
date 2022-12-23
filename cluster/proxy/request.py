@@ -1,7 +1,7 @@
 import requests
 
 url1 = 'http://127.0.0.1:5000/hit'
-url2 = 'http://127.0.0.1:5000/random'
+url2 = 'http://127.0.0.1:5000/randomrandomNode'
 url3 = 'http://127.0.0.1:5000/customized'
 query = {'query': 'SHOW FULL TABLES;'}
 
