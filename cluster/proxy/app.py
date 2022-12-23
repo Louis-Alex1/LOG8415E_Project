@@ -7,6 +7,9 @@ import pandas as pd
 import pymysql
 import logging
 import sshtunnel
+import os
+import re
+import subprocess
 from flask import Flask, request
 from mysql.connector import Error
 from sshtunnel import SSHTunnelForwarder
@@ -53,10 +56,15 @@ def customized():
     if request.method == 'POST':
         query = request.form.get('query')
         print(query)
+        customizedProxy(query)
         return query
 
 
 def hitProxy(query):
+    queryMaster(query)
+    return
+
+def queryMaster(query):
     try:
         hit_connection = mysql.connector.connect(host=nodes[0],
                                             database=db_name,
@@ -79,8 +87,12 @@ def hitProxy(query):
     return
 
 def randomProxy(query):
-    node_index = 1
-    openSshTunnel(node_index)
+    node_index = random.randint(1,3)
+    queryNode(query, node_index)
+    return
+
+def queryNode(query, index):
+    openSshTunnel(index)
     pymysqlConnect()
     dataframe = pd.read_sql_query(query, connection)
     print(dataframe)
@@ -104,7 +116,6 @@ def openSshTunnel(node_index):
     return
 
 def pymysqlConnect():
-
     global connection
 
     connection = pymysql.connect(
@@ -115,3 +126,27 @@ def pymysqlConnect():
         port = tunnel.local_bind_port
     )
     return
+
+def customizedProxy(query):
+    fastest_node_index = fastestNodePing()
+    if fastest_node_index == 0:
+        queryMaster(query)
+    else:
+        queryNode(query, fastest_node_index)
+    return
+
+def fastestNodePing():
+    node_times = []
+    
+    for node in nodes:
+        node_times.append(pingTime(node))
+
+    index_min = node_times.index(min(node_times))
+    return index_min
+
+def pingTime(ip_address):
+    proc = subprocess.Popen(['ping', '-c', '1', ip_address], stdout= subprocess.PIPE)
+    out = str(proc.communicate()[0])
+    out_regex = re.search('(min\/avg\/max\/mdev = )(.*)(\\\)', out).group(2)
+    avg_time = (out_regex.split(" ")[0]).split('/')[1]
+    return avg_time
