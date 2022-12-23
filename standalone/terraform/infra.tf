@@ -1,8 +1,8 @@
 # LOG8415E - Final Project
 # infra.tf
-# Terraform configuration relative to instance definitions
+# Terraform configuration relative to instance definition
 
-# Start one t2.micro instance for the standalone
+# Start one t2.large instance for the standalone
 resource "aws_instance" "standalone" {
   count         = 1
   ami           = "ami-0a6b2839d44d781b2"
