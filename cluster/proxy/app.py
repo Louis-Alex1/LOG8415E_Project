@@ -108,7 +108,7 @@ def pymysqlConnect():
     global connection
 
     connection = pymysql.connect(
-        host = nodes[0],
+        host = master_private_IP,
         user = db_user,
         passwd = db_password,
         db = db_name,
