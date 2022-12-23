@@ -83,7 +83,7 @@ def randomProxy(query):
     openSshTunnel(node_index)
     pymysqlConnect()
     dataframe = pd.read_sql_query(query, connection)
-    print(dataframe.head())
+    print(dataframe)
     connection.close()
     tunnel.close()
     return
