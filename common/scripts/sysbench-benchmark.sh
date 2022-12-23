@@ -10,3 +10,6 @@ sysbench oltp_read_write --table-size=1000000 --mysql-db=sakila --mysql-host=$ip
 
 #Run the benchmarking
 sysbench oltp_read_write --table-size=1000000 --mysql-db=sakila --mysql-host=$ipAddress --threads=6 --time=60 --mysql-user=benchmark --mysql-password=admin123 run
+
+#Clean the table
+sysbench oltp_read_write --mysql-db=sakila --mysql-host=$ipAddress --mysql-user=benchmark --mysql-password=admin123 cleanup
