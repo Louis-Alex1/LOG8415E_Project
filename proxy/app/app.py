@@ -5,34 +5,67 @@
 # import pymysql
 # import paramiko
 # import pandas as pd
+import mysql.connector
 # from paramiko import SSHClient
 # from sshtunnel import SSHTunnelForwarder
 # from os.path import expanduser
+from mysql.connector import Error
 from flask import Flask, request
+
+# IP of master node
+master_IP = "54.166.246.82"
 
 app = Flask(__name__)
 
+# Default route
 @app.route("/")
 def hello_world():
     return "Hello, World!"
 
+# Route for the direct hit algorithm
 @app.route('/hit', methods = ['POST'])
-def algo1():
+def hit():
     if request.method == 'POST':
         query = request.form.get('query')
         print(query)
-        return
+        hitProxy(query)
+        return query
 
+# Route for the random algorithm
 @app.route('/random', methods = ['POST'])
-def algo1():
+def random():
     if request.method == 'POST':
         query = request.form.get('query')
         print(query)
         return
 
+# Route for the customized algorithm
 @app.route('/customized', methods = ['POST'])
-def algo1():
+def customized():
     if request.method == 'POST':
         query = request.form.get('query')
         print(query)
         return
+
+
+def hitProxy(query):
+    try:
+        connection = mysql.connector.connect(host=master_IP,
+                             database="sakila",
+                             user="benchmark",
+                             password="admin123")
+        if connection.is_connected():
+            db_Info = connection.get_server_info()
+            print("db info :", db_Info)
+            cursor = connection.cursor()
+            cursor.execute(query)
+            records = cursor.fetchall()
+            print("records are : ", records)
+    except Error as e:
+        print("Error")
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+            print("closed")
+    return
