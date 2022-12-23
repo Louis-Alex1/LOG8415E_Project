@@ -2,9 +2,9 @@
 
 #Start the cluster instances
 echo "Starting cluster instances..."
-aws ec2 start-instances --instance-ids i-0b633761237c7d95c > start.txt
-aws ec2 start-instances --instance-ids i-0919ffd03f5e1e8e7 > start.txt
-aws ec2 start-instances --instance-ids i-04cb8e3f35c3e24fb > start.txt
-aws ec2 start-instances --instance-ids i-0924ac68e327f46aa > start.txt
+aws ec2 start-instances --instance-ids i-02dfa79b79caee93b > start.txt
+aws ec2 start-instances --instance-ids i-08c6fb6e6efc16128 > start.txt
+aws ec2 start-instances --instance-ids i-0b3c8ffcb959dfeeb  > start.txt
+aws ec2 start-instances --instance-ids i-05b0ebbbe123a46c0 > start.txt
 rm -f start.txt
 echo "Done"

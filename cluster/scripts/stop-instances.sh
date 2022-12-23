@@ -2,9 +2,9 @@
 
 #Stop the cluster instances
 echo "Stopping cluster instances..."
-aws ec2 stop-instances --instance-ids i-0b633761237c7d95c > stop.txt
-aws ec2 stop-instances --instance-ids i-0919ffd03f5e1e8e7 > stop.txt
-aws ec2 stop-instances --instance-ids i-04cb8e3f35c3e24fb > stop.txt
-aws ec2 stop-instances --instance-ids i-0924ac68e327f46aa > stop.txt
+aws ec2 stop-instances --instance-ids i-02dfa79b79caee93b > stop.txt
+aws ec2 stop-instances --instance-ids i-08c6fb6e6efc16128 > stop.txt
+aws ec2 stop-instances --instance-ids i-0b3c8ffcb959dfeeb > stop.txt
+aws ec2 stop-instances --instance-ids i-05b0ebbbe123a46c0> stop.txt
 rm -f stop.txt
 echo "Done"
