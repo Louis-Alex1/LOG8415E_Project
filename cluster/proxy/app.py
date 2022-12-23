@@ -16,7 +16,7 @@ nodes = ["54.81.117.88", "54.162.249.104", "100.24.29.166", "54.161.136.42"]
 master_private_IP = "10.0.1.13"
 db_name = "sakila"
 db_user = "benchmark"
-db_password= "admin123"
+db_password = "admin123"
 
 ssh_user = "ubuntu"
 ssh_key = "/home/ubuntu/.ssh/FinalProject.pem"
@@ -96,7 +96,7 @@ def openSshTunnel(node_index):
     tunnel = SSHTunnelForwarder(
         (nodes[node_index], 22),
         ssh_username = ssh_user,
-        ssh_password = ssh_key,
+        ssh_pkey= ssh_key,
         remote_bind_address = (master_private_IP, 3306)
     )
 
