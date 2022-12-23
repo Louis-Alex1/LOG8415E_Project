@@ -72,7 +72,6 @@ def queryMaster(query):
                                             password=db_password)
         if hit_connection.is_connected():
             db_Info = hit_connection.get_server_info()
-            print("db info :", db_Info)
             cursor = hit_connection.cursor()
             cursor.execute(query)
             records = cursor.fetchall()
@@ -83,7 +82,6 @@ def queryMaster(query):
         if hit_connection.is_connected():
             cursor.close()
             hit_connection.close()
-            print("closed")
     return
 
 def randomProxy(query):
@@ -101,9 +99,6 @@ def queryNode(query, index):
     return
 
 def openSshTunnel(node_index):
-
-    sshtunnel.DEFAULT_LOGLEVEL = logging.DEBUG
-
     global tunnel
     tunnel = SSHTunnelForwarder(
         (nodes[node_index], 22),
