@@ -15,7 +15,7 @@ from sshtunnel import SSHTunnelForwarder
 nodes = ["54.81.117.88", "54.162.249.104", "100.24.29.166", "54.161.136.42"]
 master_private_IP = "10.0.1.13"
 db_name = "sakila"
-db_user = "benchmark"
+db_user = "root"
 db_password = "admin123"
 
 ssh_user = "ubuntu"
