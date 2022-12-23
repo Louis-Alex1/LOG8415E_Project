@@ -19,7 +19,7 @@ db_user = "benchmark"
 db_password= "admin123"
 
 ssh_user = "ubuntu"
-ssh_key = "/home/louis/.ssh/FinalProject.pem"
+ssh_key = "/home/ubuntu/.ssh/FinalProject.pem"
 localhost = "127.0.0.1" 
 
 app = Flask(__name__)
