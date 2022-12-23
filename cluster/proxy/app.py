@@ -43,7 +43,7 @@ def hit():
 
 # Route for the random algorithm
 @app.route('/random', methods = ['POST'])
-def random():
+def randomNode():
     if request.method == 'POST':
         query = request.form.get('query')
         print(query)
@@ -85,7 +85,7 @@ def queryMaster(query):
     return
 
 def randomProxy(query):
-    node_index = random.randint(1,3)
+    node_index = random.randint(1, 3)
     queryNode(query, node_index)
     return
 
