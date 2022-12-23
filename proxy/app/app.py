@@ -2,15 +2,14 @@
 # flask.py
 # Python file of the Flask app that acts as a Proxy.
 
-# import pymysql
-# import paramiko
-# import pandas as pd
 import mysql.connector
-# from paramiko import SSHClient
-# from sshtunnel import SSHTunnelForwarder
-# from os.path import expanduser
-from mysql.connector import Error
+import pandas as pd
+import pymysql
+import logging
+import sshtunnel
 from flask import Flask, request
+from mysql.connector import Error
+from sshtunnel import SSHTunnelForwarder
 
 # IP of master node
 master_IP = "54.166.246.82"
