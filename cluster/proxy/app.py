@@ -66,7 +66,6 @@ def randomNode():
         randomProxy(query)
         return query
 
-# Route for the customized algorithm
 @app.route('/customized', methods = ['POST'])
 def customized():
     """Route for the customized proxy algorithm
